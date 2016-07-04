@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>分页测试</title>
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
+    <script src="/static/js/angular/angular.min.js"></script>
+    <script src="YK.Angular.Pagination.js"></script>
+    <script type="text/javascript">
+        angular.module('app', ['yk.angular.pagination']).controller("c", function ($scope) {
+            $scope.pagerarg = {
+                index: 3,
+                size: 10,
+                count: 300
+            }
+            $scope.pagerarg2 = {
+                index: 0,
+                size: 10,
+                count: 100
+            }
+            $scope.search = function () {
+                console.log($scope.pagerarg.index);
+            };
+            $scope.search2 = function () {
+                console.log($scope.pagerarg2.index);
+            };
+
+            $scope.totalShow = true;
+        });
+    </script>
+</head>
+<body ng-app="app" ng-controller="c">
+    
+    <input ng-model="pagerarg.index" />
+    <input ng-model="pagerarg.count" />
+    <ykpager ykp-index="pagerarg.index" ykp-size="pagerarg.size" ykp-maxshow="5" ykp-count="pagerarg.count" ykp-changed="search()" total-show="false"></ykpager>
+    <br />
+    <input ng-model="pagerarg2.index" />
+    <input ng-model="pagerarg2.count" />
+    <ykpager ykp-index="pagerarg2.index" ykp-size="pagerarg2.size" ykp-count="pagerarg2.count" ykp-changed="search2()" total-show="true"></ykpager>
+</body>
+</html>
